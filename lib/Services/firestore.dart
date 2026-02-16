@@ -25,6 +25,13 @@ Stream<QuerySnapshot> getNotesStream() {
   return notesStream;
 }
 
+Future<void> UpdateNotes(String docID ,String newNote){
+return notes.doc(docID).update({
+'note':newNote,
+'timestamp':Timestamp.now()
+});
+}
+
  Future<void> deleteNote(String docID) {
     return notes.doc(docID).delete();
   }

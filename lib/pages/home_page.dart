@@ -16,13 +16,18 @@ class _HomepageState extends State<Homepage> {
 // Text controller
 final TextEditingController textController = TextEditingController();
 
-  void  OpenNotbox(){
+  void  OpenNotbox({String? docID}){
     showDialog(
 context: context,
 builder: (context) => AlertDialog(content: TextField(controller: textController,),
 actions: [
   ElevatedButton(onPressed:(){
-    firestoreService.addNote(textController.text);
+    if(docID == null){
+firestoreService.addNote(textController.text);
+    }else{
+      firestoreService.UpdateNotes(docID,textController.text);
+    }
+    
 
     textController.clear();
 
@@ -63,12 +68,25 @@ actions: [
 
               return ListTile(
                 title: Text(noteText),
-                trailing: IconButton(
+                trailing:Row(
+                    mainAxisSize: MainAxisSize.min,
+                  children:[
+                 IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () {
                     firestoreService.deleteNote(docID);
                   },
                 ),
+
+                 IconButton(
+                  icon: const Icon(Icons.edit),
+                  onPressed: () {
+                   OpenNotbox(docID:docID);
+                  },
+                ),
+                  ]
+              )
+                
               );
             },
           );
