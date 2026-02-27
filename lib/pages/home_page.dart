@@ -1,5 +1,6 @@
 import 'package:flurd/Services/firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
@@ -11,11 +12,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-
+User? user=FirebaseAuth.instance.currentUser;
  final  FirestoreService firestoreService=FirestoreService();
 // Text controller
 final TextEditingController textController = TextEditingController();
-
+void signouting (){
+ FirebaseAuth.instance.signOut();
+}
   void  OpenNotbox({String? docID}){
     showDialog(
 context: context,
@@ -40,7 +43,11 @@ firestoreService.addNote(textController.text);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:AppBar(title:Text('Notes')),
+        appBar:AppBar(title:Text(" Note of ${user?.email ??""}"),
+      actions: [
+        IconButton(onPressed:signouting , icon: Icon(Icons.logout))
+      ],
+        ),
         floatingActionButton:FloatingActionButton(
             onPressed:OpenNotbox,
             child: const Icon(Icons.add),
