@@ -12,7 +12,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-User? user=FirebaseAuth.instance.currentUser;
+// User? user=FirebaseAuth.instance.currentUser;
  final  FirestoreService firestoreService=FirestoreService();
 // Text controller
 final TextEditingController textController = TextEditingController();
@@ -43,9 +43,14 @@ firestoreService.addNote(textController.text);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:AppBar(title:Text(" Note of ${user?.email ??""}"),
+        appBar:AppBar(title:Text(" Note of "),
+        // ${user?.email ??""}
       actions: [
-        IconButton(onPressed:signouting , icon: Icon(Icons.logout))
+        IconButton( 
+          onPressed: () {
+        FirebaseAuth.instance.signOut();
+      }
+       , icon: Icon(Icons.logout))
       ],
         ),
         floatingActionButton:FloatingActionButton(
