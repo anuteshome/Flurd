@@ -27,10 +27,10 @@ void TaskSign() async {
     );
 
     // If login succeeds, go to HomePage
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => Homepage()),
-    // );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Homepage()),
+    );
 
   } on FirebaseAuthException catch (e) {
     print("Firebase Error: ${e.code}");
