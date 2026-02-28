@@ -60,13 +60,14 @@ final TextEditingController passwordController=TextEditingController();
     TextField(
       controller:passwordController,
     ),
+    SizedBox(height: 25,),
 MyButton(
   onTap: TaskSignup,
   text: "Signup",
 ),
 GestureDetector(
   onTap: widget.onTap,
-  child: Text("Already have an account!"),
+  child: Text("Already have an account!",style: TextStyle(color: Colors.blue[700],fontWeight: FontWeight.bold),),
 )
       ],
     ),

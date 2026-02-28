@@ -60,13 +60,36 @@ final TextEditingController passwordController=TextEditingController();
     TextField(
       controller:passwordController,
     ),
+    SizedBox(height: 15,),
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          GestureDetector(
+            onTap: (){},
+            child: Text("Forget Password",
+            style: TextStyle()),
+            ),
+        ],
+      ),
+    ),
+
 MyButton(
   onTap: TaskSign,
   text: "Signin",
 ),
-GestureDetector(
-  onTap: widget.onTap,
-  child: Text("Register now"),
+
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text("If you are new "),
+    SizedBox(width: 5,),
+    GestureDetector(
+      onTap: widget.onTap,
+      child: Text("Register now",style: TextStyle(color: Colors.blue[700],fontWeight: FontWeight.bold),),
+    ),
+  ],
 )
       ],
     ),
