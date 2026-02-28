@@ -1,4 +1,5 @@
 import 'package:flurd/pages/LoginPage.dart';
+import 'package:flurd/pages/SigninOrSignup.dart';
 import 'package:flurd/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +21,7 @@ class _AuthpageflurdState extends State<Authpageflurd> {
           if(snapshot.hasData){
             return Homepage();
           }else{
-            return Loginpage();
+            return Signinorsignup();
           }
         }),
     );

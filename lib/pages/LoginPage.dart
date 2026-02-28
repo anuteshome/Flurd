@@ -5,8 +5,8 @@ import 'package:flurd/pages/home_page.dart';
 
 
 class Loginpage extends StatefulWidget {
-  // final Function? onTap;
-const Loginpage({super.key});
+  final Function()? onTap;
+const Loginpage({super.key ,required this.onTap});
 
   @override
   State<Loginpage> createState() => _LoginpageState();
@@ -64,6 +64,10 @@ MyButton(
   onTap: TaskSign,
   text: "Signin",
 ),
+GestureDetector(
+  onTap: widget.onTap,
+  child: Text("Register now"),
+)
       ],
     ),
       ),
