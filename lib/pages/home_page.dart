@@ -13,6 +13,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 // User? user=FirebaseAuth.instance.currentUser;
+User? user = FirebaseAuth.instance.currentUser;
  final  FirestoreService firestoreService=FirestoreService();
 // Text controller
 final TextEditingController textController = TextEditingController();
@@ -64,8 +65,23 @@ firestoreService.addNote(textController.text);
           if (snapshot.hasError) {
             return const Center(child: Text("Something went wrong"));
           }
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
 
-          final notesList = snapshot.data!.docs;
+    if (snapshot.hasError) {
+      return const Center(child: Text("Something went wrong"));
+    }
+
+    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+      return const Center(child: Text("No notes yet"));
+    }
+
+    final notesList = snapshot.data!.docs;
+
+          // final notesList = snapshot.data.docs;
 
           return ListView.builder(
             itemCount: notesList.length,
