@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flurd/Component/Button.dart';
 import 'package:flurd/pages/home_page.dart';
+import 'package:flurd/Services/GoogleAuth.dart';
 
 
 class Loginpage extends StatefulWidget {
@@ -79,7 +80,11 @@ MyButton(
   onTap: TaskSign,
   text: "Signin",
 ),
+GestureDetector(
+  onTap:Googleauth().signinGoogle,
+  child: Text("SignIn With Google"),
 
+),
 Row(
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
