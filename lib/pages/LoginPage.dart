@@ -82,9 +82,7 @@ MyButton(
 ),
 GestureDetector(
   onTap:Googleauth().signinGoogle,
-  child: Text("SignIn With Google",style: TextStyle(
-    backgroundColor: Colors.amber
-  ),),
+  child: Text("SignIn With Google"),
 
 ),
 Row(
