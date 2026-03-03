@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 class Googleauth{
 
-void 
+Future <UserCredential?> signinGoogle ()async{
+ 
+}
 
 }
