@@ -1,4 +1,4 @@
-# flurd'
+# flurd
 
 A new Flutter project
 
